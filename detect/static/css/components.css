@@ -1,0 +1,221 @@
+/* Composants réutilisables : boutons, badges, carte des blocs, fenêtre, notifications */
+.btn {
+	border: 1px solid var(--ink);
+	background: var(--ink);
+	color: #fff;
+	border-radius: 8px;
+	padding: 9px 16px;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.btn.sec {
+	background: var(--panel);
+	color: var(--ink);
+	border-color: var(--line);
+}
+
+.btn.sec:hover {
+	border-color: var(--ink);
+}
+
+.btn.ghost {
+	background: none;
+	border-color: transparent;
+	color: var(--mute);
+	font-weight: 400;
+}
+
+.btn.ghost:hover {
+	color: var(--lost);
+}
+
+.btn.fixit {
+	background: var(--fix);
+	border-color: var(--fix);
+}
+
+.btn:disabled {
+	opacity: .5;
+	cursor: not-allowed;
+}
+
+.sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+.acts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+}
+
+.badge {
+	display: inline-block;
+	border-radius: 99px;
+	padding: 2px 12px;
+	font-size: .85rem;
+	font-weight: 700;
+	border: 1px solid;
+}
+
+.b-sain {
+	color: var(--ok);
+	background: #e8f5f1;
+	border-color: var(--okt);
+}
+
+.b-corrompu {
+	color: #8a5a00;
+	background: #fdf1d8;
+	border-color: #f1d596;
+}
+
+.b-restauré {
+	color: #1d4fb8;
+	background: #e6eeff;
+	border-color: #bcd0fa;
+}
+
+.b-perdu {
+	color: #9c2530;
+	background: #fde8ea;
+	border-color: #f3b9bf;
+}
+
+.b-verif {
+	color: var(--mute);
+	background: #eceff3;
+	border-color: var(--line);
+}
+
+.strip,
+.map {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3px;
+}
+
+.c {
+	display: block;
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+	background: var(--okt);
+}
+
+.map .c {
+	width: 22px;
+	height: 22px;
+	border-radius: 4px;
+}
+
+.c.hit {
+	background: var(--hit);
+}
+
+.c.fixed {
+	background: var(--fix);
+}
+
+.c.lost {
+	background: var(--lost);
+}
+
+.legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 18px;
+	font-size: .85rem;
+	color: var(--mute);
+	margin-top: 10px;
+}
+
+.legend i {
+	display: inline-block;
+	width: 11px;
+	height: 11px;
+	border-radius: 3px;
+	margin-right: 6px;
+	vertical-align: -1px;
+}
+
+.empty {
+	background: var(--panel);
+	border: 1px dashed #aab4c3;
+	border-radius: 12px;
+	padding: 36px 24px;
+	text-align: center;
+}
+
+.empty p {
+	margin: 6px 0 16px;
+	color: var(--mute);
+}
+
+dialog {
+	border: 0;
+	border-radius: 14px;
+	padding: 24px;
+	max-width: 420px;
+	width: calc(100% - 32px);
+	box-shadow: 0 20px 60px rgba(23, 32, 51, .35);
+}
+
+dialog::backdrop {
+	background: rgba(23, 32, 51, .5);
+}
+
+dialog h2 {
+	margin-bottom: 8px;
+}
+
+dialog fieldset {
+	border: 0;
+	padding: 0;
+	margin: 16px 0;
+}
+
+dialog label {
+	display: block;
+	margin: 6px 0;
+}
+
+dialog input[type=range] {
+	width: 100%;
+}
+
+.dlgb {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+#toasts {
+	position: fixed;
+	bottom: 18px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: grid;
+	gap: 8px;
+	z-index: 20;
+	width: min(92vw, 420px);
+}
+
+.toast {
+	background: var(--ink);
+	color: #fff;
+	border-radius: 10px;
+	padding: 12px 16px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+
+.toast.bad {
+	background: var(--lost);
+}

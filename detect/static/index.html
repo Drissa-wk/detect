@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Detect : des archives qui se réparent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+<header><div class="bar">
+  <div class="brand">Detect</div>
+  <nav aria-label="Navigation">
+    <button data-v="upload" aria-current="page">Déposer</button>
+    <button data-v="files">Fichiers</button>
+    <button data-v="report">Rapport</button>
+  </nav>
+  <span class="demo" id="demo" hidden>Mode démo, sans serveur</span>
+  <label class="who">Utilisateur
+    <select id="user"><option>Alice</option><option>Bob</option></select>
+  </label>
+</div></header>
+
+<main>
+<!-- DÉPOSER -->
+<section class="view" id="v-upload">
+  <h1>Déposez un fichier, il saura se réparer</h1>
+  <p class="lead">Le fichier texte est découpé en blocs, protégé par un code de Reed-Solomon et signé par un CRC-32. S’il est abîmé plus tard, il peut être restauré.</p>
+  <label class="drop" id="drop" for="file">
+    <input class="sr" type="file" id="file" accept=".txt,text/plain">
+    <strong id="dropT">Glissez un fichier .txt ici</strong>
+    <span class="mute" id="dropS">ou cliquez pour le choisir (200 Ko maximum)</span>
+  </label>
+  <div class="plan">
+    <div><label for="preset">Niveau de protection</label>
+      <select id="preset">
+        <option value="32,16">RS(32,16) : corrige 8 octets par bloc</option>
+        <option value="64,48">RS(64,48) : corrige 8 octets par bloc</option>
+        <option value="255,223">RS(255,223) : corrige 16 octets par bloc</option>
+      </select></div>
+    <button class="btn" id="go" disabled>Déposer le fichier</button>
+  </div>
+  <p id="sum" class="mute" aria-live="polite"></p>
+</section>
+
+<!-- FICHIERS -->
+<section class="view" id="v-files" hidden>
+  <h1>Fichiers déposés</h1>
+  <p class="lead">Chaque fichier est vérifié à l’ouverture. Un carré représente un bloc de données.</p>
+  <div id="list"></div>
+  <div class="legend"><span><i style="background:var(--okt)"></i>Bloc intact</span><span><i style="background:var(--hit)"></i>Bloc altéré</span><span><i style="background:var(--fix)"></i>Bloc corrigé</span><span><i style="background:var(--lost)"></i>Bloc perdu</span></div>
+</section>
+
+<!-- RAPPORT -->
+<section class="view" id="v-report" hidden>
+  <h1>Rapport</h1>
+  <label class="mute" id="selW" style="display:block;margin-top:14px">Fichier
+    <select id="repSel" style="margin-left:8px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel)"></select></label>
+  <div id="rep"></div>
+</section>
+</main>
+
+<dialog id="dlg">
+  <form method="dialog" id="dlgF">
+    <h2>Abîmer le fichier</h2>
+    <p class="mute">Simule une corruption du stockage : des octets sont modifiés au hasard.</p>
+    <fieldset>
+      <label for="inten"><b>Intensité</b> : <output id="intenO">5</output> % des octets</label>
+      <input type="range" id="inten" min="1" max="30" value="5">
+      <label><input type="radio" name="mode" value="spread" checked> Octets isolés, répartis dans tout le fichier</label>
+      <label><input type="radio" name="mode" value="burst"> Rafale : une suite d’octets consécutifs (rayure)</label>
+    </fieldset>
+    <div class="dlgb"><button class="btn sec" value="cancel">Annuler</button><button class="btn" value="ok">Abîmer</button></div>
+  </form>
+</dialog>
+<div id="toasts" aria-live="polite"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

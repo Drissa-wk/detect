@@ -1,0 +1,253 @@
+/* Mise en page des trois vues : déposer, fichiers, rapport */
+.drop {
+	display: block;
+	border: 2px dashed #aab4c3;
+	border-radius: 14px;
+	background: var(--panel);
+	padding: 44px 24px;
+	text-align: center;
+	cursor: pointer;
+	transition: border-color .15s, background .15s;
+}
+
+.drop:hover,
+.drop.over,
+.drop:focus-within {
+	border-color: var(--fix);
+	background: #f5f8ff;
+}
+
+.drop strong {
+	display: block;
+	font: 700 1.25rem var(--d);
+	margin-bottom: 4px;
+}
+
+.plan {
+	display: grid;
+	gap: 16px;
+	margin-top: 20px;
+	grid-template-columns: 1fr auto;
+	align-items: end;
+}
+
+.plan label {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+.plan select {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--panel);
+}
+
+#sum {
+	margin-top: 14px;
+	min-height: 1.5em;
+}
+
+.row {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: 16px 18px;
+	margin-bottom: 12px;
+	display: grid;
+	gap: 10px 20px;
+	grid-template-columns: 1fr auto;
+}
+
+.row .strip {
+	grid-column: 1 / -1;
+}
+
+.verdict {
+	border-left: 6px solid;
+	background: var(--panel);
+	border-radius: 10px;
+	padding: 16px 20px;
+	margin: 20px 0 28px;
+}
+
+.verdict h2 {
+	margin-bottom: 2px;
+}
+
+.v-ok {
+	border-color: var(--ok);
+}
+
+.v-hit {
+	border-color: var(--hit);
+}
+
+.v-fix {
+	border-color: var(--fix);
+}
+
+.v-lost {
+	border-color: var(--lost);
+}
+
+.v-verif {
+	border-color: var(--line);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 36px;
+}
+
+section.blk {
+	margin-bottom: 36px;
+}
+
+section.blk > h2 {
+	margin-bottom: 12px;
+}
+
+dl {
+	margin: 0;
+}
+
+dl div {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 9px 0;
+	border-top: 1px solid var(--line);
+}
+
+dt {
+	color: var(--mute);
+}
+
+dd {
+	margin: 0;
+	font-weight: 700;
+	text-align: right;
+}
+
+.bars {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 150px;
+	position: relative;
+	border-bottom: 1px solid var(--ink);
+	overflow-x: auto;
+	padding-top: 8px;
+}
+
+.bars b {
+	flex: 1 0 5px;
+	min-width: 5px;
+	border-radius: 2px 2px 0 0;
+	background: var(--hit);
+}
+
+.bars b.fixed {
+	background: var(--fix);
+}
+
+.bars b.lost {
+	background: var(--lost);
+}
+
+.thr {
+	position: absolute;
+	left: 0;
+	right: 0;
+	border-top: 2px dashed var(--ink);
+	pointer-events: none;
+}
+
+.thr span {
+	position: absolute;
+	right: 0;
+	top: -1.5em;
+	font-size: .8rem;
+	background: var(--paper);
+	padding: 0 4px;
+}
+
+.rates {
+	display: grid;
+	gap: 10px;
+}
+
+.rate {
+	display: grid;
+	grid-template-columns: 80px 1fr 110px;
+	gap: 12px;
+	align-items: center;
+	font-size: .95rem;
+}
+
+.rate .t {
+	height: 14px;
+	background: #e3e8ee;
+	border-radius: 7px;
+	overflow: hidden;
+}
+
+.rate .t i {
+	display: block;
+	height: 100%;
+	background: var(--ok);
+}
+
+pre {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 14px 16px;
+	white-space: pre-wrap;
+	word-break: break-word;
+	font: inherit;
+	max-height: 220px;
+	overflow: auto;
+	margin: 0;
+}
+
+ol.log {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ol.log li {
+	padding: 8px 0;
+	border-top: 1px solid var(--line);
+	display: grid;
+	grid-template-columns: 110px 1fr;
+	gap: 12px;
+}
+
+@media (max-width: 640px) {
+	.plan,
+	.row {
+		grid-template-columns: 1fr;
+	}
+
+	.rate {
+		grid-template-columns: 70px 1fr;
+	}
+
+	.rate span:last-child {
+		grid-column: 1 / -1;
+	}
+
+	main {
+		padding: 24px 16px 60px;
+	}
+
+	.bar {
+		padding: 12px 16px;
+	}
+}

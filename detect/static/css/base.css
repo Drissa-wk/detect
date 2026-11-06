@@ -1,0 +1,163 @@
+/* Base : variables, réinitialisation, typographie, en-tête et navigation */
+:root {
+	--ink: #172033;
+	--mute: #5c677d;
+	--paper: #f2f4f7;
+	--panel: #fff;
+	--line: #d8dee6;
+	--ok: #138a72;
+	--okt: #cde8e0;
+	--hit: #d9910b;
+	--fix: #2f6fe4;
+	--lost: #cf3f4b;
+	--d: 'Bricolage Grotesque', system-ui, sans-serif;
+	--b: 'Atkinson Hyperlegible', system-ui, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font: 400 1rem/1.55 var(--b);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--d);
+	line-height: 1.15;
+	margin: 0;
+}
+
+h1 {
+	font-size: clamp(1.8rem, 4vw, 2.6rem);
+	max-width: 20ch;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 1.3rem;
+}
+
+h3 {
+	font-size: 1.05rem;
+}
+
+p {
+	margin: 0;
+}
+
+.mute {
+	color: var(--mute);
+	font-size: .9rem;
+}
+
+button,
+select,
+input {
+	font: inherit;
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 3px solid var(--fix);
+	outline-offset: 2px;
+}
+
+header {
+	background: var(--ink);
+	color: #fff;
+	position: sticky;
+	top: 0;
+	z-index: 5;
+}
+
+.bar {
+	max-width: 1040px;
+	margin: auto;
+	padding: 12px 24px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 28px;
+}
+
+.brand {
+	font: 700 1.5rem var(--d);
+	letter-spacing: -.01em;
+}
+
+nav {
+	display: flex;
+	gap: 4px;
+	flex: 1;
+}
+
+nav button {
+	background: none;
+	border: 0;
+	color: #c5cddb;
+	padding: 8px 14px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+nav button:hover {
+	color: #fff;
+}
+
+nav button[aria-current=page] {
+	background: #fff;
+	color: var(--ink);
+	font-weight: 700;
+}
+
+.who {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: .9rem;
+}
+
+.who select {
+	background: #26324d;
+	border: 1px solid #3a4866;
+	border-radius: 8px;
+	padding: 6px 10px;
+	color: #fff;
+}
+
+.demo {
+	background: var(--hit);
+	color: #1d1400;
+	border-radius: 99px;
+	padding: 2px 10px;
+	font-size: .8rem;
+	font-weight: 700;
+}
+
+main {
+	max-width: 1040px;
+	margin: auto;
+	padding: 32px 24px 80px;
+}
+
+.view[hidden] {
+	display: none;
+}
+
+.lead {
+	margin: 12px 0 28px;
+	max-width: 60ch;
+	color: var(--mute);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+	}
+}
